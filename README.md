@@ -17,3 +17,34 @@
 * Webpack from scratch
 * How to set up a project properly
 * Code splitting, how to write custom plugins
+
+## Examples
+
+```javascript
+import foo from 'foo'; // what happens now?
+
+// 1. Look at node_modules
+// 2. ???
+```
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      foo: path.join(__dirname, 'foo.js'),
+    },
+    extensions: [
+      /*...*/
+      '.jsx',
+      '.js'
+    ],
+    modules: [
+      /*...*/
+      path.join(__dirname, 'my_modules'),
+      path.join(__dirname, 'node_modules'),
+    ],
+  }
+};
+```
