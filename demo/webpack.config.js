@@ -11,15 +11,15 @@ const commonConfig = merge(
           title: "Webpack demo"
         })
       ]
-    },
-    parts.loadCSS()
+    }
   ]
 );
 
 const productionConfig = merge([
   {
     devtool: "source-map"
-  }
+  },
+  parts.extractCSS()
 ]);
 
 const developmentConfig = merge([
@@ -27,7 +27,8 @@ const developmentConfig = merge([
     // Customize host/port here if needed
     host: process.env.HOST,
     port: process.env.PORT
-  })
+  }),
+  parts.loadCSS()
 ]);
 
 module.exports = mode => {
