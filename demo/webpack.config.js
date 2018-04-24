@@ -19,7 +19,13 @@ const productionConfig = merge([
   {
     devtool: "source-map"
   },
-  parts.extractCSS()
+  parts.extractCSS(),
+  parts.loadImages({
+    options: {
+      limit: 15000,
+      name: "[name].[ext]",
+    },
+  }),
 ]);
 
 const developmentConfig = merge([
@@ -28,7 +34,8 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: process.env.PORT
   }),
-  parts.loadCSS()
+  parts.loadCSS(),
+  parts.loadImages()
 ]);
 
 module.exports = mode => {
