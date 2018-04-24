@@ -48,3 +48,13 @@ module.exports = {
   }
 };
 ```
+
+### Loaders
+
+```javascript
+use: ["style-loader", "css-loader"]
+```
+
+```javascript
+styleLoader(cssLoader(input))
+```
