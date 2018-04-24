@@ -3,29 +3,32 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const parts = require("./webpack.parts");
 
-const commonConfig = merge(
-  [
-    {
-      plugins: [
-        new HtmlWebpackPlugin({
-          title: "Webpack demo"
-        })
-      ]
-    }
-  ]
-);
+const commonConfig = merge([
+  {
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: "Webpack demo"
+      })
+    ]
+  }
+]);
 
 const productionConfig = merge([
   {
-    devtool: "source-map"
+    devtool: "source-map",
+    optimization: {
+      splitChunks: {
+        chunks: "initial"
+      }
+    }
   },
   parts.extractCSS(),
   parts.loadImages({
     options: {
       limit: 15000,
-      name: "[name].[ext]",
-    },
-  }),
+      name: "[name].[ext]"
+    }
+  })
 ]);
 
 const developmentConfig = merge([
