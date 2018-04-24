@@ -13,7 +13,11 @@ const commonConfig = merge([
   },
 ]);
 
-const productionConfig = merge([]);
+const productionConfig = merge([
+    {
+        devtool: "source-map",
+    }
+]);
 
 const developmentConfig = merge([
   parts.devServer({
